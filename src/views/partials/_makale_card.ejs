@@ -1,0 +1,35 @@
+<% 
+//eger index undefine ise tek bir makale gosteriliyordur
+//eger index bir sayi ise anasayfadaki tum makaleler gosteriliyordur
+let yukseklik = '';
+if(index == undefined){
+    yukseklik = '600';
+}else{
+    yukseklik = "60"+index
+}
+%> 
+
+
+<div class="card">
+    <div class="card-image">
+      <figure class="image is-4by3">
+        <img src="https://source.unsplash.com/random/800<%= yukseklik %> " alt="Placeholder image">
+      </figure>
+    </div>
+    <div class="card-content">
+      <div class="media">
+        <div class="media-content">
+          <p class="title is-4"><%- makale.title.rendered %> </p>
+          
+        </div>
+      </div>
+  
+      <div class="content">
+       <%- index==undefined ? makale.content.rendered : makale.excerpt.rendered.slice(0,200) %> 
+       <% if (index !== undefined) { %>
+         <a href="/blog/<%= makale.id %>">Devamini Oku</a>
+       <% } %>
+      
+      </div>
+    </div>
+  </div>
